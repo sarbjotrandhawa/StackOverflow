@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Assignment3_N01392504.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Questions</h2>
+
+<p>
+    @Html.ActionLink("Ask a question", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.views)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionDateAndTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+
+        @Html.DisplayFor(modelItem => item.views)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+    </td>
+    <td>
+        @Html.ActionLink(item.QuestionName, "Details", new { id = item.QuestionId })
+        @*@Html.DisplayFor(modelItem => item.QuestionName)*@
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.name)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.QuestionDateAndTime)
+    </td>
+
+</tr>
+}
+
+</table>

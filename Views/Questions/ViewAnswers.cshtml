@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Assignment3_N01392504.Models.Answer>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "ViewAnswers";
+}
+
+<h2>ViewAnswers</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+
+        <h1> @Html.Display("QuestionName")</h1>
+
+    </div>
+}
+
+
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Question.QuestionName)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.AnswerText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnswerDateAndTime)
+        </th>
+        <th>@Html.DisplayNameFor(model => model.name)</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Question.QuestionName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.AnswerText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnswerDateAndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @if (User.Identity.GetUserName().Equals(item.name))
+                {
+                    @Html.ActionLink("Edit Answer", "EditAnswer", new { id = item.AnswerId }) 
+                }
+                @Html.ActionLink("Answer Details", "DetailAnswers", new { id = item.AnswerId })
+
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Back to Details", "Details", new { id = ViewBag.QuestionId }) |
+    @Html.ActionLink("Add Answer", "AddAnswer", new { id = ViewBag.QuestionId })
+
+</div>
+

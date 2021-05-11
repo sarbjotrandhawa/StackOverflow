@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Assignment3_N01392504.Models.Question>
+
+@{
+    ViewBag.Title = "Stack Overflow";
+}
+
+<div class="jumbotron">
+    <h3>Learn, Share, Build!</h3>
+    <h4>Each month, over 50 million developers come to Stack Overflow to learn, share their knowledge and build their careers.</h4>
+    <p>Join the world's largest developer community.</p>
+    <p>
+        Want to ask and search detail of a question? You have to login first!!
+    </p>
+</div>
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.views)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionDateAndTime)
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+
+            @Html.DisplayFor(modelItem => item.views)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionDateAndTime)
+        </td>
+
+    </tr>
+        }
+
+    </table>
+</div>

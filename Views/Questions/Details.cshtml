@@ -1,0 +1,61 @@
+﻿@model Assignment3_N01392504.Models.Question
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <td>
+                <h1>@Html.DisplayFor(model => model.QuestionName) </h1>
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                @Html.DisplayFor(model => model.Category.CategoryName)
+            </td>
+
+            <td>
+                @Html.DisplayName("Votes")
+                @Html.Display("Count")
+            </td>
+
+            <td>
+                @Html.DisplayName("Answers")
+                @Html.Display("CountAnswer")
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.QuestionDateAndTime)
+            </td>
+
+            <td>
+                @if (User.Identity.GetUserName().Equals(Model.name))
+                {
+                   @Html.ActionLink("Edit Question", "Edit", new { id = Model.QuestionId })
+                }
+            </td>
+
+
+
+        </tr>
+
+    </table>
+</div>
+<div class="row">
+    <p>
+        @Html.ActionLink("Vote", "AddVote", new { id = Model.QuestionId }) |
+        @Html.ActionLink("Answer", "AddAnswer", new { id = Model.QuestionId }) |
+        @Html.ActionLink("Display Answers", "ViewAnswers", new { id = Model.QuestionId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+
